@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermercado R Ferreira | Coribe-BA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1><span>R</span> Ferreira</h1>
+                <p>Supermercado</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" onclick="toggleCarrinho()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Qualidade que sua família merece.</h2>
+            <p>O ponto de encontro da economia em Coribe-BA.</p>
+            <a href="#produtos" class="btn">Ver Ofertas</a>
+        </div>
+    </section>
+
+    <section id="produtos" class="container">
+        <h2 class="section-title">Nossos Produtos</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-img-placeholder"><i class="fas fa-apple-whole"></i></div>
+                <h3>Maçã Gala (Kg)</h3>
+                <p class="price">R$ 8,99</p>
+                <button class="btn-add" onclick="addItem('Maçã Gala', 8.99)">Adicionar</button>
+            </div>
+            <div class="product-card">
+                <div class="product-img-placeholder"><i class="fas fa-bread-slice"></i></div>
+                <h3>Pão Francês (Kg)</h3>
+                <p class="price">R$ 12,50</p>
+                <button class="btn-add" onclick="addItem('Pão Francês', 12.50)">Adicionar</button>
+            </div>
+            <div class="product-card">
+                <div class="product-img-placeholder"><i class="fas fa-box"></i></div>
+                <h3>Arroz 5kg Tipo 1</h3>
+                <p class="price">R$ 28,90</p>
+                <button class="btn-add" onclick="addItem('Arroz 5kg', 28.90)">Adicionar</button>
+            </div>
+            <div class="product-card">
+                <div class="product-img-placeholder"><i class="fas fa-coffee"></i></div>
+                <h3>Café Torrado 500g</h3>
+                <p class="price">R$ 16,40</p>
+                <button class="btn-add" onclick="addItem('Café 500g', 16.40)">Adicionar</button>
+            </div>
+            <div class="product-card">
+                <div class="product-img-placeholder"><i class="fas fa-bottle-droplet"></i></div>
+                <h3>Óleo de Soja 900ml</h3>
+                <p class="price">R$ 6,85</p>
+                <button class="btn-add" onclick="addItem('Óleo Soja', 6.85)">Adicionar</button>
+            </div>
+            <div class="product-card">
+                <div class="product-img-placeholder"><i class="fas fa-soap"></i></div>
+                <h3>Detergente Líquido</h3>
+                <p class="price">R$ 2,49</p>
+                <button class="btn-add" onclick="addItem('Detergente', 2.49)">Adicionar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="about-section">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h2 class="section-title" style="text-align: left;">Sobre o R Ferreira</h2>
+                <p>Fundado em Coribe, o <strong>Supermercado R Ferreira</strong> nasceu com o compromisso de servir a nossa comunidade com dedicação e respeito.</p>
+                <p>Nossa missão é oferecer produtos frescos, hortifrúti selecionado e um açougue de confiança, sempre com o melhor preço da região. Acreditamos que um bom atendimento é o segredo para manter nossa vizinhança sempre satisfeita.</p>
+                <div class="about-features">
+                    <span><i class="fas fa-check-circle"></i> Entrega Rápida</span>
+                    <span><i class="fas fa-check-circle"></i> Hortifrúti Diário</span>
+                    <span><i class="fas fa-check-circle"></i> Preço Justo</span>
+                </div>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=600&q=80" alt="Supermercado">
+            </div>
+        </div>
+    </section>
+
+    <div id="carrinho-lateral" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <span class="close-cart" onclick="toggleCarrinho()">&times;</span>
+        </div>
+        <div id="itens-carrinho" class="cart-body">
+            <p style="text-align: center; margin-top: 20px;">O carrinho está vazio.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-area">
+                <span>Total:</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout" onclick="finalizarCompra()">Finalizar no WhatsApp</button>
+        </div>
+    </div>
+
+    <footer id="contato">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <h3>R Ferreira</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Coribe - Bahia</p>
+                <p><i class="fas fa-envelope"></i> supermercadorferreira@gmail.com</p>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
