@@ -54,6 +54,6 @@ function finalizarCompra() {
     mensagem += `\n*Total: R$ ${total.toFixed(2)}*`;
     
     // Link do WhatsApp com a mensagem pronta
-    const fone = "5577999999999"; // Substitua pelo seu número real
+    const fone = "5562999188212"; // Substitua pelo seu número real
     window.open(`https://wa.me/${fone}?text=${encodeURIComponent(mensagem)}`);
 }
