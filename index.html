@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R Ferreira Supermercado</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    html, body { height: 100%; margin: 0; }
+    .fade-in { animation: fadeIn 0.8s ease forwards; opacity: 0; }
+    .fade-in-delay-1 { animation-delay: 0.2s; }
+    .fade-in-delay-2 { animation-delay: 0.4s; }
+    .fade-in-delay-3 { animation-delay: 0.6s; }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(20px); } }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .float-anim { animation: float 3s ease-in-out infinite; }
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    .gradient-green { background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); }
+    .scroll-smooth { scroll-behavior: smooth; }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { green: '#16a34a', darkgreen: '#15803d', orange: '#f97316', lightorange: '#fed7aa', lightgreen: '#dcfce7' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto scroll-smooth bg-white"><!-- Header -->
+  <header id="header" class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-sm border-b border-gray-100">
+   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+     <div class="w-2 h-2 rounded-full gradient-green flex items-center justify-center">
+     </div><img src="logo-rferreira.png" alt="RFerreira Logo">
+    </div>
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600"><a href="#ofertas" class="hover:text-brand-green transition">Ofertas</a> <a href="#departamentos" class="hover:text-brand-green transition">Departamentos</a> <a href="#sobre" class="hover:text-brand-green transition">Sobre</a> <a href="#depoimentos" class="hover:text-brand-green transition">Depoimentos</a> <a href="#contato" class="hover:text-brand-green transition">Contato</a>
+    </nav><a href="#contato" class="bg-brand-orange text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-orange-600 transition flex items-center gap-1"> <i data-lucide="phone" style="width:14px;height:14px;"></i> Contato </a>
+   </div>
+  </header><!-- Hero -->
+  <section class="w-full pt-24 pb-16 px-4 gradient-green relative overflow-hidden">
+   <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+   <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 relative z-10">
+    <div class="flex-1 text-center md:text-left fade-in"><span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">🔥 Ofertas da Semana</span>
+     <h1 id="hero-title" class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">Ofertas imperdíveis para sua família!</h1>
+     <p id="hero-subtitle" class="text-white/90 text-lg mb-6">Economia e qualidade todos os dias. Produtos frescos com os melhores preços da região.</p><a href="#ofertas" class="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-full font-bold hover:bg-orange-600 transition shadow-lg"> Ver Ofertas <i data-lucide="arrow-right" style="width:18px;height:18px;"></i> </a>
+    </div>
+    <div class="flex-1 flex justify-center fade-in fade-in-delay-1">
+     <div class="w-64 h-64 md:w-80 md:h-80 bg-white/10 rounded-3xl flex items-center justify-center float-anim">
+      <div class="text-center">
+       <div class="text-6xl mb-2">
+        🛒
+       </div>
+       <div class="text-white font-bold text-xl">
+        Até 50% OFF
+       </div>
+       <div class="text-white/80 text-sm">
+        em produtos selecionados
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Vantagens -->
+  <section class="w-full py-12 px-4 bg-gray-50">
+   <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="bg-white rounded-xl p-5 text-center card-hover shadow-sm">
+     <div class="w-12 h-12 mx-auto mb-3 bg-brand-lightgreen rounded-full flex items-center justify-center">
+      <i data-lucide="heart" class="text-brand-green" style="width:22px;height:22px;"></i>
+     </div>
+     <h3 class="font-semibold text-gray-800 text-sm">Atendimento de Qualidade</h3>
+    </div>
+    <div class="bg-white rounded-xl p-5 text-center card-hover shadow-sm">
+     <div class="w-12 h-12 mx-auto mb-3 bg-brand-lightgreen rounded-full flex items-center justify-center">
+      <i data-lucide="leaf" class="text-brand-green" style="width:22px;height:22px;"></i>
+     </div>
+     <h3 class="font-semibold text-gray-800 text-sm">Produtos Frescos Diariamente</h3>
+    </div>
+    <div class="bg-white rounded-xl p-5 text-center card-hover shadow-sm">
+     <div class="w-12 h-12 mx-auto mb-3 bg-brand-lightorange rounded-full flex items-center justify-center">
+      <i data-lucide="tag" class="text-brand-orange" style="width:22px;height:22px;"></i>
+     </div>
+     <h3 class="font-semibold text-gray-800 text-sm">Preços Competitivos</h3>
+    </div>
+    <div class="bg-white rounded-xl p-5 text-center card-hover shadow-sm">
+     <div class="w-12 h-12 mx-auto mb-3 bg-brand-lightorange rounded-full flex items-center justify-center">
+      <i data-lucide="truck" class="text-brand-orange" style="width:22px;height:22px;"></i>
+     </div>
+     <h3 class="font-semibold text-gray-800 text-sm">Entrega Rápida</h3>
+    </div>
+   </div>
+  </section><!-- Ofertas da Semana -->
+  <section id="ofertas" class="w-full py-16 px-4">
+   <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10"><span class="text-brand-orange font-semibold text-sm uppercase tracking-wider">Promoções</span>
+     <h2 class="text-3xl font-extrabold text-gray-800 mt-2">Ofertas da Semana</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+     <div class="bg-white border border-gray-100 rounded-2xl p-4 card-hover shadow-sm relative overflow-hidden"><span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">-30%</span>
+      <div class="text-4xl text-center mb-3">
+       🥩
+      </div>
+      <h4 class="font-semibold text-gray-800 text-sm">Picanha Angus</h4>
+      <p class="text-brand-orange font-bold text-lg">R$ 49,90<span class="text-xs text-gray-400 line-through ml-1">R$ 69,90</span></p>
+     </div>
+     <div class="bg-white border border-gray-100 rounded-2xl p-4 card-hover shadow-sm relative overflow-hidden"><span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">-25%</span>
+      <div class="text-4xl text-center mb-3">
+       🍎
+      </div>
+      <h4 class="font-semibold text-gray-800 text-sm">Maçã Fuji (kg)</h4>
+      <p class="text-brand-orange font-bold text-lg">R$ 5,99<span class="text-xs text-gray-400 line-through ml-1">R$ 7,99</span></p>
+     </div>
+     <div class="bg-white border border-gray-100 rounded-2xl p-4 card-hover shadow-sm relative overflow-hidden"><span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">-40%</span>
+      <div class="text-4xl text-center mb-3">
+       🥛
+      </div>
+      <h4 class="font-semibold text-gray-800 text-sm">Leite Integral</h4>
+      <p class="text-brand-orange font-bold text-lg">R$ 4,49<span class="text-xs text-gray-400 line-through ml-1">R$ 6,99</span></p>
+     </div>
+     <div class="bg-white border border-gray-100 rounded-2xl p-4 card-hover shadow-sm relative overflow-hidden"><span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">-20%</span>
+      <div class="text-4xl text-center mb-3">
+       🍞
+      </div>
+      <h4 class="font-semibold text-gray-800 text-sm">Pão Francês (kg)</h4>
+      <p class="text-brand-orange font-bold text-lg">R$ 12,90<span class="text-xs text-gray-400 line-through ml-1">R$ 15,90</span></p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Departamentos -->
+  <section id="departamentos" class="w-full py-16 px-4 bg-gray-50">
+   <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10"><span class="text-brand-green font-semibold text-sm uppercase tracking-wider">Departamentos</span>
+     <h2 class="text-3xl font-extrabold text-gray-800 mt-2">Tudo que você precisa</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+     <div class="bg-white rounded-2xl p-5 text-center card-hover shadow-sm cursor-pointer">
+      <div class="text-3xl mb-2">
+       🥬
+      </div>
+      <h4 class="font-semibold text-gray-700 text-sm">Hortifruti</h4>
+     </div>
+     <div class="bg-white rounded-2xl p-5 text-center card-hover shadow-sm cursor-pointer">
+      <div class="text-3xl mb-2">
+       🥩
+      </div>
+      <h4 class="font-semibold text-gray-700 text-sm">Açougue</h4>
+     </div>
+     <div class="bg-white rounded-2xl p-5 text-center card-hover shadow-sm cursor-pointer">
+      <div class="text-3xl mb-2">
+       🥖
+      </div>
+      <h4 class="font-semibold text-gray-700 text-sm">Padaria</h4>
+     </div>
+     <div class="bg-white rounded-2xl p-5 text-center card-hover shadow-sm cursor-pointer">
+      <div class="text-3xl mb-2">
+       🍺
+      </div>
+      <h4 class="font-semibold text-gray-700 text-sm">Bebidas</h4>
+     </div>
+     <div class="bg-white rounded-2xl p-5 text-center card-hover shadow-sm cursor-pointer">
+      <div class="text-3xl mb-2">
+       🧹
+      </div>
+      <h4 class="font-semibold text-gray-700 text-sm">Limpeza</h4>
+     </div>
+     <div class="bg-white rounded-2xl p-5 text-center card-hover shadow-sm cursor-pointer">
+      <div class="text-3xl mb-2">
+       🧴
+      </div>
+      <h4 class="font-semibold text-gray-700 text-sm">Utilidades</h4>
+     </div>
+    </div>
+   </div>
+  </section><!-- Sobre -->
+  <section id="sobre" class="w-full py-16 px-4">
+   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
+    <div class="flex-1"><span class="text-brand-green font-semibold text-sm uppercase tracking-wider">Sobre Nós</span>
+     <h2 class="text-3xl font-extrabold text-gray-800 mt-2 mb-4">Tradição e qualidade desde 2005</h2>
+     <p id="about-text" class="text-gray-600 leading-relaxed mb-4">O R Ferreira nasceu do sonho de oferecer produtos de qualidade com preços justos para toda a comunidade. Com mais de 11 anos de história, nos tornamos referência em atendimento, variedade e economia. Nossa missão é proporcionar uma experiência de compra agradável, com produtos sempre frescos e um time dedicado a cuidar de você e sua família.</p>
+     <div class="flex flex-wrap gap-4 mt-4">
+      <div class="flex items-center gap-2 text-sm text-gray-700">
+       <i data-lucide="check-circle" class="text-brand-green" style="width:16px;height:16px;"></i> Qualidade garantida
+      </div>
+      <div class="flex items-center gap-2 text-sm text-gray-700">
+       <i data-lucide="check-circle" class="text-brand-green" style="width:16px;height:16px;"></i> Preços justos
+      </div>
+      <div class="flex items-center gap-2 text-sm text-gray-700">
+       <i data-lucide="check-circle" class="text-brand-green" style="width:16px;height:16px;"></i> Frescor diário
+      </div>
+     </div>
+    </div>
+    <div class="flex-1 grid grid-cols-2 gap-3">
+     <div class="bg-brand-lightgreen rounded-2xl p-6 text-center">
+      <div class="text-2xl font-bold text-brand-green">
+       11+
+      </div>
+      <div class="text-xs text-gray-600">
+       Anos de história
+      </div>
+     </div>
+     <div class="bg-brand-lightorange rounded-2xl p-6 text-center">
+      <div class="text-2xl font-bold text-brand-orange">
+       5000+
+      </div>
+      <div class="text-xs text-gray-600">
+       Produtos
+      </div>
+     </div>
+     <div class="bg-brand-lightorange rounded-2xl p-6 text-center">
+      <div class="text-2xl font-bold text-brand-orange">
+       50+
+      </div>
+      <div class="text-xs text-gray-600">
+       Colaboradores
+      </div>
+     </div>
+     <div class="bg-brand-lightgreen rounded-2xl p-6 text-center">
+      <div class="text-2xl font-bold text-brand-green">
+       10k+
+      </div>
+      <div class="text-xs text-gray-600">
+       Clientes satisfeitos
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Depoimentos -->
+  <section id="depoimentos" class="w-full py-16 px-4 bg-gray-50">
+   <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10"><span class="text-brand-orange font-semibold text-sm uppercase tracking-wider">Depoimentos</span>
+     <h2 class="text-3xl font-extrabold text-gray-800 mt-2">O que nossos clientes dizem</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+     <div class="bg-white rounded-2xl p-6 shadow-sm card-hover">
+      <div class="flex items-center gap-1 mb-3 text-yellow-400">
+       ⭐⭐⭐⭐⭐
+      </div>
+      <p class="text-gray-600 text-sm mb-4">"Melhor supermercado da região! Produtos sempre frescos e preços ótimos. O atendimento é impecável."</p>
+      <div class="flex items-center gap-3">
+       <div class="w-8 h-8 rounded-full bg-brand-lightgreen flex items-center justify-center text-sm font-bold text-brand-green">
+        M
+       </div><span class="text-sm font-semibold text-gray-700">Maria Silva</span>
+      </div>
+     </div>
+     <div class="bg-white rounded-2xl p-6 shadow-sm card-hover">
+      <div class="flex items-center gap-1 mb-3 text-yellow-400">
+       ⭐⭐⭐⭐⭐
+      </div>
+      <p class="text-gray-600 text-sm mb-4">"Faço compras aqui toda semana. O hortifruti é maravilhoso e a padaria tem o melhor pão francês!"</p>
+      <div class="flex items-center gap-3">
+       <div class="w-8 h-8 rounded-full bg-brand-lightorange flex items-center justify-center text-sm font-bold text-brand-orange">
+        J
+       </div><span class="text-sm font-semibold text-gray-700">João Santos</span>
+      </div>
+     </div>
+     <div class="bg-white rounded-2xl p-6 shadow-sm card-hover">
+      <div class="flex items-center gap-1 mb-3 text-yellow-400">
+       ⭐⭐⭐⭐⭐
+      </div>
+      <p class="text-gray-600 text-sm mb-4">"Adoro as promoções semanais! Sempre encontro tudo que preciso com ótimo custo-benefício."</p>
+      <div class="flex items-center gap-3">
+       <div class="w-8 h-8 rounded-full bg-brand-lightgreen flex items-center justify-center text-sm font-bold text-brand-green">
+        A
+       </div><span class="text-sm font-semibold text-gray-700">Ana Oliveira</span>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Galeria -->
+  <section class="w-full py-16 px-4">
+   <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10"><span class="text-brand-green font-semibold text-sm uppercase tracking-wider">Galeria</span>
+     <h2 class="text-3xl font-extrabold text-gray-800 mt-2">Conheça nossa loja</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+     <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-2xl h-40 flex items-center justify-center text-4xl">
+      🏪
+     </div>
+     <div class="bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl h-40 flex items-center justify-center text-4xl">
+      🍉
+     </div>
+     <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-2xl h-40 flex items-center justify-center text-4xl">
+      🧁
+     </div>
+     <div class="bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl h-40 flex items-center justify-center text-4xl">
+      🛍️
+     </div>
+    </div>
+   </div>
+  </section><!-- Cadastro -->
+  <section class="w-full py-16 px-4 gradient-green">
+   <div class="max-w-2xl mx-auto text-center">
+    <h2 class="text-3xl font-extrabold text-white mb-3">Receba nossas ofertas exclusivas!</h2>
+    <p class="text-white/80 mb-6">Cadastre-se e seja o primeiro a saber das promoções.</p>
+    <form id="signup-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"><input type="email" placeholder="Seu melhor e-mail" class="flex-1 px-4 py-3 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange" required> <button type="submit" class="bg-brand-orange text-white px-6 py-3 rounded-full font-bold hover:bg-orange-600 transition text-sm">Cadastrar</button>
+    </form>
+    <p id="signup-msg" class="text-white/80 text-sm mt-3 hidden">✅ Cadastro realizado com sucesso!</p>
+   </div>
+  </section><!-- Contato / Footer -->
+  <footer id="contato" class="w-full bg-gray-900 text-white py-16 px-4">
+   <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
+    <div>
+     <div class="flex items-center gap-2 mb-4">
+      <div class="w-2 h-2 rounded-full gradient-green flex items-center justify-center">
+       <span class="text-white font-bold">.</span>
+      </div><img src="logo-rferreira.png" alt="RFerreira Logo">
+     </div>
+     <p class="text-gray-400 text-sm">Seu supermercado de confiança. Qualidade, economia e atendimento que você merece.</p>
+    </div>
+    <div>
+     <h4 class="font-semibold mb-3">Contato</h4>
+     <div class="space-y-2 text-sm text-gray-400">
+      <p class="flex items-center gap-2"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Rua das Flores, 124 - Centro, Coribe-BA</p>
+      <p class="flex items-center gap-2"><i data-lucide="phone" style="width:14px;height:14px;"></i> (62) 99918-8212</p>
+      <p class="flex items-center gap-2"><i data-lucide="mail" style="width:14px;height:14px;"></i> supermercadorferreira@gmail.com</p>
+     </div>
+    </div>
+    <div>
+     <h4 class="font-semibold mb-3">Horário</h4>
+     <div class="space-y-2 text-sm text-gray-400">
+      <p>Seg a Sáb: 7h às 22h</p>
+      <p>Domingos: 7h às 14h</p>
+      <p>Feriados: 8h às 12h</p>
+     </div>
+    </div>
+    <div>
+     <h4 class="font-semibold mb-3">Redes Sociais</h4>
+     <div class="flex gap-3"><a href="#" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-green transition"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a> <a href="#" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-green transition"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a> <a href="#" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-green transition"><i data-lucide="twitter" style="width:16px;height:16px;"></i></a>
+     </div>
+    </div>
+   </div>
+   <div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
+    © 2026 Supermercado R Ferreira. Todos os direitos reservados.
+   </div>
+  </footer><!-- WhatsApp Flutuante --> <a id="whatsapp-btn" href="https://wa.me/5562999188212" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition z-50 float-anim">
+   <svg viewbox="0 0 24 24" width="28" height="28" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" /><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.11-1.14l-.29-.174-3.01.79.8-2.93-.19-.3A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z" />
+   </svg></a>
+  <script>
+  const defaultConfig = {
+    hero_title: 'Ofertas imperdíveis para sua família!',
+    hero_subtitle: 'Economia e qualidade todos os dias. Produtos frescos com os melhores preços da região.',
+    about_text: 'O R Ferreira nasceu do sonho de oferecer produtos de qualidade com preços justos para toda a comunidade. Com mais de 11 anos de história, nos tornamos referência em atendimento, variedade e economia. Nossa missão é proporcionar uma experiência de compra agradável, com produtos sempre frescos e um time dedicado a cuidar de você e sua família.',
+    whatsapp_number: '5511999999999',
+    background_color: '#ffffff',
+    surface_color: '#f9fafb',
+    text_color: '#1f2937',
+    primary_color: '#16a34a',
+    secondary_color: '#f97316',
+    font_family: 'Plus Jakarta Sans',
+    font_size: 16
+  };
+
+  async function onConfigChange(config) {
+    const c = { ...defaultConfig, ...config };
+    document.getElementById('hero-title').textContent = c.hero_title;
+    document.getElementById('hero-subtitle').textContent = c.hero_subtitle;
+    document.getElementById('about-text').textContent = c.about_text;
+    document.getElementById('whatsapp-btn').href = `https://wa.me/${c.whatsapp_number}`;
+
+    document.body.style.fontFamily = `${c.font_family}, sans-serif`;
+    const baseSize = c.font_size;
+    document.querySelectorAll('h1').forEach(el => el.style.fontSize = `${baseSize * 2.5}px`);
+    document.querySelectorAll('h2').forEach(el => el.style.fontSize = `${baseSize * 1.875}px`);
+    document.querySelectorAll('p, span, a, h3, h4').forEach(el => {
+      if (!el.closest('h1') && !el.closest('h2')) {
+        // keep proportional
+      }
+    });
+
+    document.body.style.backgroundColor = c.background_color;
+    document.querySelectorAll('.bg-gray-50, [class*="bg-gray-50"]').forEach(el => el.style.backgroundColor = c.surface_color);
+    document.querySelectorAll('h1, h2, h3, h4').forEach(el => {
+      if (!el.closest('.gradient-green') && !el.closest('.bg-gray-900')) el.style.color = c.text_color;
+    });
+  }
+
+  function mapToCapabilities(config) {
+    const c = { ...defaultConfig, ...config };
+    return {
+      recolorables: [
+        { get: () => c.background_color || defaultConfig.background_color, set: (v) => { c.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => c.surface_color || defaultConfig.surface_color, set: (v) => { c.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+        { get: () => c.text_color || defaultConfig.text_color, set: (v) => { c.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => c.primary_color || defaultConfig.primary_color, set: (v) => { c.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); } },
+        { get: () => c.secondary_color || defaultConfig.secondary_color, set: (v) => { c.secondary_color = v; window.elementSdk.setConfig({ secondary_color: v }); } }
+      ],
+      borderables: [],
+      fontEditable: {
+        get: () => c.font_family || defaultConfig.font_family,
+        set: (v) => { c.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+      },
+      fontSizeable: {
+        get: () => c.font_size || defaultConfig.font_size,
+        set: (v) => { c.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+      }
+    };
+  }
+
+  function mapToEditPanelValues(config) {
+    const c = { ...defaultConfig, ...config };
+    return new Map([
+      ['hero_title', c.hero_title || defaultConfig.hero_title],
+      ['hero_subtitle', c.hero_subtitle || defaultConfig.hero_subtitle],
+      ['about_text', c.about_text || defaultConfig.about_text],
+      ['whatsapp_number', c.whatsapp_number || defaultConfig.whatsapp_number]
+    ]);
+  }
+
+  window.elementSdk.init({ defaultConfig, onConfigChange, mapToCapabilities, mapToEditPanelValues });
+
+  // Signup form
+  document.getElementById('signup-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('signup-msg').classList.remove('hidden');
+    this.reset();
+    setTimeout(() => document.getElementById('signup-msg').classList.add('hidden'), 4000);
+  });
+
+  lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f7b9c3d44c36d54',t:'MTc3ODEwODUyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
